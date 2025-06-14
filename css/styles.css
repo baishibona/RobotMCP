@@ -137,6 +137,20 @@
   text-shadow: 1px 1px 4px #000;
 }
 
+#overlay1 {
+  color: #FF69B4; /* Hot Pink */
+}
+#overlay2 {
+  color: #90EE90; /* Light Green */
+}
+#overlay3 {
+  color: #FF69B4; /* Hot Pink */
+}
+#overlay4 {
+  color: #90EE90; /* Light Green */
+}
+
+
 /*
 #bg-video {
   position: fixed;
