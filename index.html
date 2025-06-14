@@ -98,15 +98,9 @@
 
             // Define time -> message mappings
             const textTimeline = [
-              { time: 0, text: "A robot" },
-              { time: 1.5, text: "Lifts. Picks. Moves." },
-              { time: 3.0, text: "It works so you don't have to." },
-              { time: 5.0, text: "Powered by AI, built for labor." },
-              { time: 7.0, text: "Works 24/7, no sick/coffee break." },
-              { time: 9.0, text: "no sick day." },
-              { time: 11.0, text: "no coffee break." },
-              { time: 13.0, text: "Always learning. Never in your way." },
-              { time: 15.0, text: "¯\_(ツ)_/¯" } // clear text
+              { time: 0, text: "Understands you, instantly." },
+              { time: 2.0, text: "No code. Just intent." },
+              { time: 4.0, text: "Learn and get better." },
             ];
 
             let lastText = "";
@@ -125,144 +119,7 @@
               }
             });
         </script>
-        <!-- for force data overlay video, synced with video-->
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <script>
-            const canvas = document.getElementById("forceChart");
-
-            let time = [], values = [];
-            let chart;
-
-            fetch("assets/force_x.csv")
-              .then(res => res.text())
-              .then(csv => {
-                const lines = csv.trim().split('\n').slice(1);
-                lines.forEach(line => {
-                  const [t, v] = line.split(',');
-                  time.push(parseFloat(t));
-                  values.push(parseFloat(v));
-                });
-
-                chart = new Chart(canvas, {
-                  type: 'line',
-                  data: {
-                    labels: [],
-                    datasets: [{
-                      label: '',
-                      data: [],
-                      borderColor: 'rgba(0, 200, 255, 0.5)',
-                      backgroundColor: 'transparent',
-                      pointRadius: 0,
-                      borderWidth: 2,
-                      tension: 0.2
-                    }]
-                  },
-                  options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    animation: false,
-                    plugins: { legend: { display: false } },
-                    scales: {
-                      x: {
-                        type: 'linear',
-                        min: 0,
-                        max: 16,
-                        display: true,
-                        grid: {
-                          display: true,
-                          color: 'rgba(0, 0, 0, 0.1)'  // subtle grid lines
-                        },
-                        ticks: {
-                          color: '#333',
-                          font: { size: 10 }
-                        }
-                      },
-                      y: {
-                        type: 'linear',
-                        min: -1,
-                        max: 1,
-                        display: true,
-                        grid: {
-                          display: true,
-                          color: 'rgba(0, 0, 0, 0.1)'
-                        },
-                        ticks: {
-                          color: '#333',
-                          font: { size: 10 }
-                        }
-                      }
-                    },
-                    elements: { line: { fill: false } }
-                  }
-                });
-
-                // Update the plot as video plays
-                video.addEventListener("timeupdate", () => {
-                    const t = video.currentTime;
-                    const idx = time.findIndex(val => val > t);
-                    const clippedIdx = idx === -1 ? time.length : idx;
-
-                    // past values (line)
-                    const pastTime = time.slice(0, clippedIdx);
-                    const pastValues = values.slice(0, clippedIdx);
-
-                    // current point (last one shown)
-                    const currentTime = pastTime.at(-1);
-                    const currentValue = pastValues.at(-1);
-
-                    chart.data = {
-                    labels: pastTime,
-                    datasets: [
-                      {
-                        label: 'force x',
-                        data: pastValues,
-                        borderColor: 'rgba(0, 100, 255, 0.8)',  // deep blue, semi-transparent
-                        backgroundColor: 'transparent',
-                        pointRadius: 0,
-                        borderWidth: 2,
-                        tension: 0.2
-                      },
-                      {
-                        label: '',
-                        data: [{ x: currentTime, y: currentValue }],
-                        borderColor: 'transparent',
-                        backgroundColor: 'rgba(255, 69, 0, 1)',  // bright red-orange
-                        pointRadius: 3,
-                        pointStyle: 'circle',
-                        showLine: false
-                      }
-                    ]
-                    };
-
-                    chart.update();
-                    });
-
-            });
-        </script>
-        <script>
-        fetch('assets/robot.log')
-          .then(res => res.text())
-          .then(text => {
-            const lines = text.trim().split('\n');
-            const logOutput = document.getElementById('log-output');
-            const logContainer = document.getElementById('log-container');
-
-            let currentLine = 0;
-            let isPaused = false;
-
-            // Pause/resume on hover
-            logContainer.addEventListener('mouseenter', () => isPaused = true);
-            logContainer.addEventListener('mouseleave', () => isPaused = false);
-
-            setInterval(() => {
-              if (!isPaused && currentLine < lines.length) {
-                logOutput.textContent += lines[currentLine] + '\n';
-                currentLine++;
-                logContainer.scrollTop = logContainer.scrollHeight;
-              }
-            }, 100);  // adjust scroll speed here
-          });
-        </script>
+        
 
 
     </body>
