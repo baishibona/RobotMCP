@@ -96,10 +96,11 @@
   top: 0;
   left: 0;
   width: 100vw;
-  height: 100vh;
+  height: auto;
   object-fit: cover;
   object-position: center center;
   z-index: -1;
+  background-color: black; /* Optional: fills blank space with black */
 }
 
 /*
