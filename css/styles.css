@@ -10904,8 +10904,7 @@ textarea.form-control-lg {
 }
 html {
   height: 100%;
-  scroll-padding-top: calc(4.5rem - 1px);
-  scroll-behavior: smooth;
+  scroll-behavior: auto;
 }
 
 body {
@@ -11082,6 +11081,7 @@ header.masthead h1, header.masthead .h1 {
 .fullpage-section {
   height: 100vh;
   scroll-snap-align: start;
+  scroll-snap-stop: always;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -11090,6 +11090,7 @@ header.masthead h1, header.masthead .h1 {
 body {
   scroll-snap-type: y mandatory;
   overflow-y: scroll;
+  scroll-behavior: auto; /* important: no smooth scrolling for jump effect */
   margin: 0;
 }
 
