@@ -10927,6 +10927,10 @@ body {
   scroll-margin-top: 0px; /* override any offset */
 }
 
+#intro-section {
+  display: block;
+}
+
 .typing-paragraph::after {
   content: '|';
   animation: blink-once 1s forwards;

@@ -87,8 +87,8 @@
         </section>
 
         <!-- Fullscreen Section 2: Text Content -->
-        <section class="fullpage-section" id="intro-section" style="background-color: #f2e8da; color: #2c2c2c;">
-          <div class="centered-text" style="max-width: 800px; margin: 0 auto; padding: 2rem; text-align: left;">
+        <section class="fullpage-section" id="intro-section" style="background-color: #f2e8da; color: #2c2c2c; display: block;">
+          <div class="text-container" style="max-width: 800px; margin: 0 auto; padding: 4rem 2rem 2rem 2rem; text-align: left;">
             <h1 style="font-size: 2.5rem; font-weight: 600; margin-bottom: 1.5rem;">Meet RobotMCP</h1>
             <p id="type1" class="typing-paragraph" style="font-size: 1.5rem; line-height: 1.8;"></p>
             <p id="type2" class="typing-paragraph" style="font-size: 1.5rem; line-height: 1.8;"></p>
@@ -175,7 +175,7 @@
 
           let hasTyped = false;
 
-          function typeParagraphSequentially(index = 0, speed = 30) {
+          function typeParagraphSequentially(index = 0, speed = 40, gapDelay = 1500) {
             if (index >= paragraphs.length) return;
 
             const { id, text } = paragraphs[index];
@@ -187,8 +187,10 @@
               i++;
               if (i >= text.length) {
                 clearInterval(interval);
-                // When done, start next paragraph
-                setTimeout(() => typeParagraphSequentially(index + 1), 500);
+                // Wait a moment before starting the next paragraph
+                setTimeout(() => {
+                  typeParagraphSequentially(index + 1, speed, gapDelay);
+                }, gapDelay);
               }
             }, speed);
           }
@@ -197,7 +199,7 @@
             entries.forEach(entry => {
               if (entry.isIntersecting && !hasTyped) {
                 hasTyped = true;
-                typeParagraphSequentially(0);
+                typeParagraphSequentially(); // starts with index 0
               }
             });
           }, { threshold: 0.4 });
