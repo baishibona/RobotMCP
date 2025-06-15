@@ -21,36 +21,6 @@
     <!-- support plot (force data) -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <body id="page-top">
-        <!-- 2x2 videos with text overlay-->
-        <div class="video-grid">
-          <div class="video-wrapper left"> <!-- dimmed -->
-            <video id="video1" autoplay muted loop playsinline>
-              <source src="assets/bg1.mp4" type="video/mp4" />
-            </video>
-            <div class="overlay-text" id="overlay1"></div>
-          </div>
-          <div class="video-wrapper">
-            <video id="video2" autoplay muted loop playsinline>
-              <source src="assets/bg2.mp4" type="video/mp4" />
-            </video>
-            <div class="overlay-text" id="overlay2"></div>
-          </div>
-          <div class="video-wrapper left"> <!-- dimmed -->
-            <video id="video3" autoplay muted loop playsinline>
-              <source src="assets/bg3.mp4" type="video/mp4" />
-            </video>
-            <div class="overlay-text" id="overlay3"></div>
-          </div>
-          <div class="video-wrapper">
-            <video id="video4" autoplay muted loop playsinline>
-              <source src="assets/bg4.mp4" type="video/mp4" />
-            </video>
-            <div class="overlay-text" id="overlay4"></div>
-          </div>
-        </div>
-
-
-
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
             <div class="container px-4 px-lg-5">
@@ -83,6 +53,46 @@
                 <!-- </div> -->
             </div>
         </header>
+
+        <!-- Fullscreen Section 1: Video Grid -->
+        <section class="fullpage-section" id="video-section">
+          <!-- 2x2 videos with text overlay-->
+          <div class="video-grid">
+            <div class="video-wrapper left"> <!-- dimmed -->
+              <video id="video1" autoplay muted loop playsinline>
+                <source src="assets/bg1.mp4" type="video/mp4" />
+              </video>
+              <div class="overlay-text" id="overlay1"></div>
+            </div>
+            <div class="video-wrapper">
+              <video id="video2" autoplay muted loop playsinline>
+                <source src="assets/bg2.mp4" type="video/mp4" />
+              </video>
+              <div class="overlay-text" id="overlay2"></div>
+            </div>
+            <div class="video-wrapper left"> <!-- dimmed -->
+              <video id="video3" autoplay muted loop playsinline>
+                <source src="assets/bg3.mp4" type="video/mp4" />
+              </video>
+              <div class="overlay-text" id="overlay3"></div>
+            </div>
+            <div class="video-wrapper">
+              <video id="video4" autoplay muted loop playsinline>
+                <source src="assets/bg4.mp4" type="video/mp4" />
+              </video>
+              <div class="overlay-text" id="overlay4"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Fullscreen Section 2: Text Content -->
+        <section class="fullpage-section" id="intro-section">
+          <div class="centered-text">
+            <h1>Robots that understand you</h1>
+            <p>No programming. No scripts. Just intent.</p>
+          </div>
+        </section>
+
         <!-- Footer-->
         <footer class="bg-light py-4">
             <div class="container px-4 px-lg-5 text-center">
