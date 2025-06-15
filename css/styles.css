@@ -10927,6 +10927,17 @@ body {
   scroll-margin-top: 0px; /* override any offset */
 }
 
+.typing-paragraph::after {
+  content: '|';
+  animation: blink 1s infinite;
+  opacity: 0.5;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 1; }
+}
+
 .page-section {
   padding: 8rem 0;
 }
